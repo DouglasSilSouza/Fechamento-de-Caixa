@@ -179,7 +179,7 @@ main h5 {
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 @media screen and (max-width: 540px) {

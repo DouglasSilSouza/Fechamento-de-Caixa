@@ -16,7 +16,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script src="./js/mascara.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Do proeto -->
     <link rel="stylesheet" href="./css/styles.css" />
@@ -32,6 +31,7 @@
       <h5>
         Coloque as informações atentamente abaixo sem cifrão somente os valores.
       </h5>
+      <p><button id="edit-values" class="btn btn-success">Clique aqui</button> para editar os valores.</p>
       <div id="confirmacao-dados">
         <h3>Olá</h3>
         <h5>Insira abaixo os valores corretos dos seguintes itens:</h5>
@@ -43,21 +43,21 @@
                 <tbody class="table-group-divider">
                     <tr>
                         <td class="title">PP</td>
-                        <td class="input"><input type="text" class="form-control" onkeyup="mascara('R$ ##,##',this,event,true)" placeholder="Digite o valor do tamanho PP"></td>
+                        <td class="input"><input type="text" class="form-control input-table" placeholder="Digite o valor do tamanho PP"></td>
                     <tr>
                         <td class="title">P</td>
-                        <td class="input"><input type="text" class="form-control" onkeyup="mascara('R$ ##,##',this,event,true)" placeholder="Digite o valor do tamanho P"></td>
+                        <td class="input"><input type="text" class="form-control input-table" placeholder="Digite o valor do tamanho P"></td>
                     </tr>
                     <tr>
                         <td class="title">M</td>
-                        <td class="input"><input type="text" class="form-control" onkeyup="mascara('R$ ##,##',this,event,true)" placeholder="Digite o valor do tamanho M"></td>
+                        <td class="input"><input type="text" class="form-control input-table" placeholder="Digite o valor do tamanho M"></td>
                     </tr>
                     <tr>
                         <td class="title">G</td>
-                        <td class="input"><input type="text" class="form-control" onkeyup="mascara('R$ ##,##',this,event,true)" placeholder="Digite o valor do tamanho G"></td>
+                        <td class="input"><input type="text" class="form-control input-table" placeholder="Digite o valor do tamanho G"></td>
                     </tr>
                         <td class="title">GG</td>
-                        <td class="input"><input type="text" class="form-control" onkeyup="mascara('R$ ##,##',this,event,true)" placeholder="Digite o valor do tamanho GG"></td>
+                        <td class="input"><input type="text" class="form-control input-table" placeholder="Digite o valor do tamanho GG"></td>
                     </tr>
                 </tbody>
             </table>
@@ -296,5 +296,22 @@
         </div>
       </div>
     </main>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+      $(document).ready(function(){
+          $('.input-table').mask('R$ 00,00');
+          // Função para aplicar a máscara com base no tipo selecionado
+  
+          // Evento de mudança no select
+          $('#documento').change(function(){
+              // Obtém o valor selecionado
+              var tipoSelecionado = $(this).val();
+  
+              // Chama a função para aplicar a máscara
+              aplicarMascara(tipoSelecionado);
+          });
+      });
+  </script>
   </body>
 </html>

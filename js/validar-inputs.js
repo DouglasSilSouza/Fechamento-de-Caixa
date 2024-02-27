@@ -2,7 +2,8 @@ export { obterDadosDaSessao };
 
 const containerCalculos = document.querySelector("#info-container"),
   containerValidator = document.querySelector("#confirmacao-dados"),
-  buttonConfirmation = containerValidator.querySelector("#btn-insert");
+  buttonConfirmation = containerValidator.querySelector("#btn-insert"),
+  buttonEditValues = document.querySelector("#edit-values");
 
 let objValores = {};
 
@@ -70,7 +71,7 @@ const pressBtn = () => {
 
 const salvarDadosNaSessao = () => {
   const timestamp = new Date().getTime();
-  const dadosComTimestamp = { timestamp, dados };
+  const dadosComTimestamp = { timestamp, objValores };
   sessionStorage.setItem("objValores", JSON.stringify(dadosComTimestamp));
 };
 
@@ -93,5 +94,27 @@ const obterDadosDaSessao = () => {
 
   return null; // Retorna null se não houver dados ou se estiverem expirados
 };
-pressBtn();
-obterDadosDaSessao();
+
+const editValues = () => {
+  buttonEditValues.addEventListener("click", () => {
+    if (sessionStorage.getItem("objValores")) {
+      sessionStorage.removeItem("objValores");
+
+      containerCalculos.classList.add("hide");
+      containerValidator.classList.remove("hide");
+  
+      pressBtn()
+    }
+  })
+}
+
+if (sessionStorage.getItem("objValores")) {
+  containerCalculos.classList.remove("hide");
+  containerValidator.classList.add("hide");
+} else {
+  pressBtn();
+  containerCalculos.classList.add("hide");
+  containerValidator.classList.remove("hide");
+}
+
+editValues()
