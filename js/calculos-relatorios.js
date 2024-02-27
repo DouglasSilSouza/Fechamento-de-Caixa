@@ -1,11 +1,10 @@
-import { obterDadosDaSessao } from "./validar-inputs.js";
 
 // Seletores
 const infoIndices = document.querySelectorAll(".info-indice ul li");
 const metodosPagamentos = document.querySelectorAll(".finally .info-metodo-pagamento ul")
 const totalDiv = document.querySelector("#total span");
 
-const valoresSacos = obterDadosDaSessao()
+const valoresSacos = JSON.parse(sessionStorage.getItem("objValores"))
 
 const formtarMoeda = (value) => `R$ ${value.toLocaleString("pt-BR",{minimumFractionDigits: 2,})}`;
 
@@ -43,8 +42,7 @@ const calculoCadaItem = (container) => {
             itemRestante.value = qtdItens;
             if (nameClass !== "pulseiras") {
               somaQuantidadeTodosItens(nameClass, qtdItens, container)
-
-              const calculandoItems = itemVendido * valoresSacos[nameClass];
+              const calculandoItems = itemVendido * valoresSacos.objValores[nameClass];
               somaValoresTodosItens(nameClass, calculandoItems, container);
               itemSubtotal.value = formtarMoeda(calculandoItems)
             }

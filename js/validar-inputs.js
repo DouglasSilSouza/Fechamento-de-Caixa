@@ -1,5 +1,3 @@
-export { obterDadosDaSessao };
-
 const containerCalculos = document.querySelector("#info-container"),
   containerValidator = document.querySelector("#confirmacao-dados"),
   buttonConfirmation = containerValidator.querySelector("#btn-insert"),
