@@ -45,37 +45,37 @@ main h5 {
     text-align: center;
 }
 
-.info-container {
+#info-container {
     min-width: 100%;
     padding: 1.5rem;
 }
 
-.info-container .info-titles ul, .info-container .info-indice ul {
+#info-container .info-titles ul, #info-container .info-indice ul {
     display: flex;
     justify-content: flex-end;
     padding-left: 0;
 }
 
-.info-container .info-titles ul {
+#info-container .info-titles ul {
     flex-direction: row;
 }
 
-.info-container .info-titles ul li {
+#info-container .info-titles ul li {
     list-style: none;
     min-width: 20%;
 }
 
-.info-container .info-titles ul li p{
+#info-container .info-titles ul li p{
     text-align: center;
     font-size: 1.3rem;
     font-weight: 900;
 }
 
-.info-container .info-indice ul {
+#info-container .info-indice ul {
     flex-direction: column;
 }
 
-.info-container .info-indice ul li {
+#info-container .info-indice ul li {
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -85,42 +85,42 @@ main h5 {
     padding: 5px;
 }
 
-.info-container .info-indice ul li:nth-child(1){
+#info-container .info-indice ul li:nth-child(1){
     border: none;
 }
 
-.info-container .info-indice ul li:nth-child(4){
+#info-container .info-indice ul li:nth-child(4){
     border-top: 1px solid rgb(212, 212, 212);
 }
 
-.info-container .info-indice ul li p{
+#info-container .info-indice ul li p{
     text-align: center;
     min-width: 20%;
     font-weight: 600;
     font-size: 1rem;
 }
 
-.info-container .info-indice ul li span {
+#info-container .info-indice ul li span {
     display: flex;
     flex-direction: row;
     list-style: none;
     gap: 2rem;
 }
 
-.info-container .info-indice ul li span input {
+#info-container .info-indice ul li span input {
     max-width: 20%;
 }
 
-.info-container .info-indice ul .Subtotal {
+#info-container .info-indice ul .Subtotal {
     justify-content: space-between;
 }
 
-.info-container .info-indice ul .Subtotal span {
+#info-container .info-indice ul .Subtotal span {
     justify-content: flex-end;
     padding-right: 1.5rem;
 }
 
-.info-container .info-indice ul .Subtotal span input {
+#info-container .info-indice ul .Subtotal span input {
     max-width: 28%;
 }
 
@@ -153,26 +153,26 @@ main h5 {
     font-weight: 800;
     font-size: 2rem;
 }
-.confirmacao-dados {
+#confirmacao-dados {
     margin-top: 25px;
     padding-bottom: 15px;
     display: flex;
     flex-direction: column;
 }
-.confirmacao-dados h5, .confirmacao-dados h3 {
+#confirmacao-dados h5, #confirmacao-dados h3 {
     text-align: center;
 }
 
-.confirmacao-dados .table-responsive{
+#confirmacao-dados .table-responsive{
     border-radius: 15px;
     margin-bottom: 15px;
 }
-.confirmacao-dados table th {
+#confirmacao-dados table th {
     text-align: center;
     font-size: 1.3rem;
 }
 
-.confirmacao-dados table tbody .title {
+#confirmacao-dados table tbody .title {
     text-align: center;
     font-weight: 500;
     font-size: 1rem;
@@ -200,7 +200,7 @@ main h5 {
         font-size: 1rem;
     }
 
-    .info-container {
+    #info-container {
         padding: .5rem;
     }
 
@@ -208,16 +208,16 @@ main h5 {
         display: none;
     }
 
-    .info-container .info-titles ul li {
+    #info-container .info-titles ul li {
         min-width: 100%;
     }
 
-    .info-container .info-indice ul li {
+    #info-container .info-indice ul li {
         gap: .5rem;
         flex-direction: column;
     }
 
-    .info-container .info-indice ul li span {
+    #info-container .info-indice ul li span {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -225,13 +225,13 @@ main h5 {
         justify-content: center;
     }
 
-    .info-container .info-indice ul li span input {
+    #info-container .info-indice ul li span input {
         flex: 1 2 50%;
         margin-bottom: 10px;
         min-width: 48%;
     }
 
-    .info-container .info-indice ul li p {
+    #info-container .info-indice ul li p {
         min-width: 100%;
     }
 
@@ -244,7 +244,7 @@ main h5 {
         margin-bottom: 30px;
     }
 
-    .info-container .info-indice ul .Subtotal span {
+    #info-container .info-indice ul .Subtotal span {
         padding-right: 0;
     }
 }

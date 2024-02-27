@@ -1,21 +1,17 @@
 export { obterDadosDaSessao };
 
-const containerCalculos = document.querySelector(".info-container"),
-  containerValidator = document.querySelector(".confirmacao-dados"),
+const containerCalculos = document.querySelector("#info-container"),
+  containerValidator = document.querySelector("#confirmacao-dados"),
   buttonConfirmation = containerValidator.querySelector("#btn-insert");
 
-const objValores = {
-  obj: {},
-};
+let objValores = {};
 
 const validarDados = () => {
-  containerCalculos.classList.add("hide");
-
   let validado = true;
   let message = [];
   let camposVazios = [];
 
-  objValores.obj = {};
+  objValores = {};
 
   const formInputs = containerValidator.querySelectorAll(
     "table tbody tr td.input"
@@ -38,7 +34,7 @@ const validarDados = () => {
         .replace("R$", "")
         .replace(",", ".")
         .trim();
-      objValores.obj[nameCampo.toLowerCase()] = parseFloat(formatValue);
+      objValores[nameCampo.toLowerCase()] = parseFloat(formatValue);
     }
   });
 
@@ -50,16 +46,17 @@ const validarDados = () => {
     message.push(messageCampoVazio);
   }
 
-  return { validado, message, objValores };
+  return { validado, message };
 };
 
 const pressBtn = () => {
+  containerCalculos.classList.add("hide");
   buttonConfirmation.addEventListener("click", () => {
     const validar = validarDados();
     if (validar.validado) {
       containerCalculos.classList.remove("hide");
-      containerValidator.classList.add(".hide");
-      salvarDadosNaSessao(objValores);
+      containerValidator.classList.add("hide");
+      salvarDadosNaSessao();
     } else {
       Swal.fire({
         title: "OPS...",
@@ -71,7 +68,7 @@ const pressBtn = () => {
   });
 };
 
-const salvarDadosNaSessao = (dados) => {
+const salvarDadosNaSessao = () => {
   const timestamp = new Date().getTime();
   const dadosComTimestamp = { timestamp, dados };
   sessionStorage.setItem("objValores", JSON.stringify(dadosComTimestamp));
@@ -97,3 +94,4 @@ const obterDadosDaSessao = () => {
   return null; // Retorna null se não houver dados ou se estiverem expirados
 };
 pressBtn();
+obterDadosDaSessao();

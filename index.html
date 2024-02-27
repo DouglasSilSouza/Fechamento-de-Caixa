@@ -20,8 +20,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Do proeto -->
     <link rel="stylesheet" href="./css/styles.css" />
-    <script src="./js/validar-inputs.js" defer></script>
-    <script src="./js/calculos-relatorios.js" defer></script>
+    <script type="module" src="./js/validar-inputs.js" defer></script>
+    <script type="module" src="./js/calculos-relatorios.js" defer></script>
   </head>
   <body>
     <header>
@@ -32,7 +32,7 @@
       <h5>
         Coloque as informações atentamente abaixo sem cifrão somente os valores.
       </h5>
-      <div class="confirmacao-dados">
+      <div id="confirmacao-dados">
         <h3>Olá</h3>
         <h5>Insira abaixo os valores corretos dos seguintes itens:</h5>
         <div class="table-responsive">
@@ -64,7 +64,7 @@
         </div>
         <button id="btn-insert" class="btn btn-primary">Inserir</button>
     </div>
-      <div class="info-container">
+      <div id="info-container">
         <div class="info-titles">
           <ul>
             <li></li>
