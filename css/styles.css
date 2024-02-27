@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(90deg, #43c6a6 0%, #f8ffae 100%);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+header, main {
+    max-width: 60%;
+    margin: 1.5rem auto;
+}
+
+header {
+    background-color: #FFF;
+    color: rgb(75, 75, 75);
+    border-radius: 1.4rem;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+header h3 {
+    color: #6c6c6c;
+}
+
+main {
+    padding-top: 15px;
+    background-color: #fcfcfc;
+    color: rgb(75, 75, 75);
+    border-radius: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main h5 {
+    text-align: center;
+}
+
+.info-container {
+    min-width: 100%;
+    padding: 1.5rem;
+}
+
+.info-container .info-titles ul, .info-container .info-indice ul {
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 0;
+}
+
+.info-container .info-titles ul {
+    flex-direction: row;
+}
+
+.info-container .info-titles ul li {
+    list-style: none;
+    min-width: 20%;
+}
+
+.info-container .info-titles ul li p{
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+
+.info-container .info-indice ul {
+    flex-direction: column;
+}
+
+.info-container .info-indice ul li {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 2rem;
+    margin-bottom: .5rem;
+    border-bottom: 1px solid rgb(212, 212, 212);
+    padding: 5px;
+}
+
+.info-container .info-indice ul li:nth-child(1){
+    border: none;
+}
+
+.info-container .info-indice ul li:nth-child(4){
+    border-top: 1px solid rgb(212, 212, 212);
+}
+
+.info-container .info-indice ul li p{
+    text-align: center;
+    min-width: 20%;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.info-container .info-indice ul li span {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 2rem;
+}
+
+.info-container .info-indice ul li span input {
+    max-width: 20%;
+}
+
+.info-container .info-indice ul .Subtotal {
+    justify-content: space-between;
+}
+
+.info-container .info-indice ul .Subtotal span {
+    justify-content: flex-end;
+    padding-right: 1.5rem;
+}
+
+.info-container .info-indice ul .Subtotal span input {
+    max-width: 28%;
+}
+
+.finally {
+    display: flex;
+    flex-direction: row;
+}
+
+.info-metodo-pagamento {
+    min-width: 50%;
+}
+
+.info-metodo-pagamento ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 1rem;
+}
+
+.info-metodo-pagamento ul li {
+    border-right: 1px solid rgb(212, 212, 212);
+    padding-right: 10px;
+}
+
+#total {
+    min-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-size: 2rem;
+}
+.confirmacao-dados {
+    margin-top: 25px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.confirmacao-dados h5, .confirmacao-dados h3 {
+    text-align: center;
+}
+
+.confirmacao-dados .table-responsive{
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+.confirmacao-dados table th {
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.confirmacao-dados table tbody .title {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.hide {
+    display: none;
+}
+
+@media screen and (max-width: 540px) {
+
+    body {
+        padding: .5rem;
+    }
+
+    header, main {
+        min-width: 100%;
+    }
+
+    main {
+        padding: .5rem 0;
+    }
+
+    main h5 {
+        font-size: 1rem;
+    }
+
+    .info-container {
+        padding: .5rem;
+    }
+
+    .info-titles {
+        display: none;
+    }
+
+    .info-container .info-titles ul li {
+        min-width: 100%;
+    }
+
+    .info-container .info-indice ul li {
+        gap: .5rem;
+        flex-direction: column;
+    }
+
+    .info-container .info-indice ul li span {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: .5rem;
+        justify-content: center;
+    }
+
+    .info-container .info-indice ul li span input {
+        flex: 1 2 50%;
+        margin-bottom: 10px;
+        min-width: 48%;
+    }
+
+    .info-container .info-indice ul li p {
+        min-width: 100%;
+    }
+
+    .finally {
+        flex-direction: column;
+    }
+
+    .finally .info-metodo-pagamento ul {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+
+    .info-container .info-indice ul .Subtotal span {
+        padding-right: 0;
+    }
+}
