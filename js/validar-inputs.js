@@ -9,12 +9,12 @@ const validarDados = () => {
   let validado = true;
   let message = [];
   let camposVazios = [];
-
   objValores = {};
 
   const formInputs = containerValidator.querySelectorAll(
     "table tbody tr td.input"
   );
+  
   formInputs.forEach((container) => {
     const campoInput = container.querySelector("input");
 
@@ -22,19 +22,28 @@ const validarDados = () => {
       return;
     }
 
-    const nameCampo =
-      campoInput.parentNode.parentNode.querySelector(".title").textContent;
+    const nameCampo = campoInput.parentNode.parentNode.querySelector(".title").textContent;
 
-    if (campoInput.value === undefined || campoInput.value.trim() === "") {
-      camposVazios.push(nameCampo);
-      validado = false;
+    // Verificar se é o campo de Copos e se está vazio
+    if (nameCampo.toLowerCase() === 'copos' && campoInput.value.trim() === "") {
+      if (campoInput.value === undefined || campoInput.value.trim() === "" && nameCampo.toLowerCase() !== 'copos') {
+        camposVazios.push(nameCampo);
+        validado = false;
+      } else {
+        const formatValue = campoInput.value
+          .replace("R$", "")
+          .replace(",", ".")
+          .trim();
+        objValores[nameCampo.toLowerCase()] = parseFloat(formatValue);
+      }
     } else {
       const formatValue = campoInput.value
-        .replace("R$", "")
-        .replace(",", ".")
-        .trim();
-      objValores[nameCampo.toLowerCase()] = parseFloat(formatValue);
+          .replace("R$", "")
+          .replace(",", ".")
+          .trim();
+        objValores[nameCampo.toLowerCase()] = parseFloat(formatValue);
     }
+
   });
 
   // Adiciona a mensagem apenas se houver campos vazios
@@ -48,6 +57,7 @@ const validarDados = () => {
   return { validado, message };
 };
 
+
 const pressBtn = () => {
   containerCalculos.classList.add("hide");
   buttonConfirmation.addEventListener("click", () => {
@@ -56,6 +66,7 @@ const pressBtn = () => {
       containerCalculos.classList.remove("hide");
       containerValidator.classList.add("hide");
       salvarDadosNaSessao();
+      location.reload();
     } else {
       Swal.fire({
         title: "OPS...",
@@ -100,11 +111,10 @@ const editValues = () => {
 
       containerCalculos.classList.add("hide");
       containerValidator.classList.remove("hide");
-  
-      pressBtn()
+      pressBtn();
     }
-  })
-}
+  });
+};
 
 if (sessionStorage.getItem("objValores")) {
   containerCalculos.classList.remove("hide");
@@ -115,4 +125,4 @@ if (sessionStorage.getItem("objValores")) {
   containerValidator.classList.remove("hide");
 }
 
-editValues()
+editValues();

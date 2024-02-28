@@ -1,21 +1,42 @@
-
 // Seletores
 const infoIndices = document.querySelectorAll(".info-indice ul li");
-const metodosPagamentos = document.querySelectorAll(".finally .info-metodo-pagamento ul")
+const metodosPagamentos = document.querySelectorAll(
+  ".finally .info-metodo-pagamento ul"
+);
 const totalDiv = document.querySelector("#total span");
 
-const valoresSacos = JSON.parse(sessionStorage.getItem("objValores"))
+const valoresSacos = JSON.parse(sessionStorage.getItem("objValores"));
 
-const formtarMoeda = (value) => `R$ ${value.toLocaleString("pt-BR",{minimumFractionDigits: 2,})}`;
+const formtarMoeda = (value) =>
+  `R$ ${value.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
 
 // Funções
 const calculoCadaItem = (container) => {
   container.querySelectorAll("li span").forEach((element) => {
+    const nameClass = element.parentNode.className;
+
     const itemAdquiridoInput = element.querySelector("input.item-adquirido");
     const itemVendidoInput = element.querySelector("input.item-vendido");
 
+    // console.log(element.parentNode.querySelectorAll(".pulseiras span input"))
     if (itemAdquiridoInput && itemVendidoInput) {
       [itemAdquiridoInput, itemVendidoInput].forEach((input) => {
+        if (!valoresSacos) {
+          return;
+        }
+        // console.log(valoresSacos.objValores[nameClass] === null)
+        if (valoresSacos.objValores[nameClass] === null) {
+          input.disabled = true;
+          if (nameClass ==! "copos") {
+            const pulseirasInput = document.querySelectorAll(".pulseiras span input");
+            pulseirasInput.forEach((elementInput) => {
+                elementInput.disabled = true;
+            })
+          }
+          return;
+        }
+
+
         input.addEventListener("change", (event) => {
           const itemAdquirido = parseInt(itemAdquiridoInput.value);
           const itemVendido = parseInt(itemVendidoInput.value);
@@ -36,15 +57,14 @@ const calculoCadaItem = (container) => {
               "A quantidade vendida não pode ser superior à quantidade adquirida"
             );
           } else {
-            const nameClass = element.parentNode.className;
-            
             const qtdItens = itemAdquirido - itemVendido;
             itemRestante.value = qtdItens;
             if (nameClass !== "pulseiras") {
-              somaQuantidadeTodosItens(nameClass, qtdItens, container)
-              const calculandoItems = itemVendido * valoresSacos.objValores[nameClass];
+              somaQuantidadeTodosItens(nameClass, qtdItens, container);
+              const calculandoItems =
+                itemVendido * valoresSacos.objValores[nameClass];
               somaValoresTodosItens(nameClass, calculandoItems, container);
-              itemSubtotal.value = formtarMoeda(calculandoItems)
+              itemSubtotal.value = formtarMoeda(calculandoItems);
             }
           }
         });
@@ -54,10 +74,12 @@ const calculoCadaItem = (container) => {
 };
 
 const somaValoresTodosItens = (nameClass, valueItem, container) => {
-  const todosSubtotais =  container.parentNode.querySelector(".Subtotal span #valores-subtotal");
+  const todosSubtotais = container.parentNode.querySelector(
+    ".Subtotal span #valores-subtotal"
+  );
 
   if (!somaValoresTodosItens.obj) {
-    somaValoresTodosItens.obj = {}
+    somaValoresTodosItens.obj = {};
   }
   somaValoresTodosItens.obj[nameClass] = valueItem;
 
@@ -68,15 +90,17 @@ const somaValoresTodosItens = (nameClass, valueItem, container) => {
     }
   }
 
-  todosSubtotais.value = formtarMoeda(soma)
-  somandoTotal(nameClass, valueItem)
+  todosSubtotais.value = formtarMoeda(soma);
+  somandoTotal(nameClass, valueItem);
 };
 
 const somaQuantidadeTodosItens = (nameClass, qtd, container) => {
-  const todosRestantes =  container.parentNode.querySelector(".Subtotal span #item-restante-subtotal");
+  const todosRestantes = container.parentNode.querySelector(
+    ".Subtotal span #item-restante-subtotal"
+  );
 
   if (!somaQuantidadeTodosItens.obj) {
-    somaQuantidadeTodosItens.obj = {}
+    somaQuantidadeTodosItens.obj = {};
   }
   somaQuantidadeTodosItens.obj[nameClass] = qtd;
 
@@ -87,12 +111,12 @@ const somaQuantidadeTodosItens = (nameClass, qtd, container) => {
     }
   }
 
-  todosRestantes.value = soma
-}
+  todosRestantes.value = soma;
+};
 
 const somaValoresMetodosPagamentos = (nameClass, valueItem) => {
   if (!somaValoresMetodosPagamentos.obj) {
-    somaValoresMetodosPagamentos.obj = {}
+    somaValoresMetodosPagamentos.obj = {};
   }
   somaValoresMetodosPagamentos.obj[nameClass] = valueItem;
 
@@ -102,9 +126,9 @@ const somaValoresMetodosPagamentos = (nameClass, valueItem) => {
       soma += somaValoresMetodosPagamentos.obj[propriedade];
     }
   }
-  somandoTotal(nameClass, valueItem)
+  somandoTotal(nameClass, valueItem);
   // todosRestantes.value = soma
-}
+};
 
 const somaMetodosPagamentos = (container) => {
   container.querySelectorAll("li").forEach((element) => {
@@ -112,27 +136,26 @@ const somaMetodosPagamentos = (container) => {
       debitoInput = element.querySelector("input#card-debit"),
       pixInput = element.querySelector("input#pix");
 
-      element.addEventListener("change", () => {
-        const credito = creditoInput ? parseFloat(creditoInput.value) : 0,
-          debito = debitoInput ? parseFloat(debitoInput.value) : 0,
-          pix = pixInput ? parseFloat(pixInput.value) : 0;
+    element.addEventListener("change", () => {
+      const credito = creditoInput ? parseFloat(creditoInput.value) : 0,
+        debito = debitoInput ? parseFloat(debitoInput.value) : 0,
+        pix = pixInput ? parseFloat(pixInput.value) : 0;
 
-        if (isNaN(credito) || isNaN(debito) || isNaN(pix)) {
-          return;
-        }
+      if (isNaN(credito) || isNaN(debito) || isNaN(pix)) {
+        return;
+      }
 
-        let valueItem = credito + debito + pix
+      let valueItem = credito + debito + pix;
 
-        const nameClass = element.className;
-        somaValoresMetodosPagamentos(nameClass, valueItem)
-
-      });
+      const nameClass = element.className;
+      somaValoresMetodosPagamentos(nameClass, valueItem);
+    });
   });
 };
 
 const somandoTotal = (nameClass, valueItem) => {
   if (!somandoTotal.obj) {
-    somandoTotal.obj = {}
+    somandoTotal.obj = {};
   }
   somandoTotal.obj[nameClass] = valueItem;
 
@@ -142,15 +165,14 @@ const somandoTotal = (nameClass, valueItem) => {
       soma += somandoTotal.obj[propriedade];
     }
   }
-  totalDiv.textContent = formtarMoeda(soma)
+  totalDiv.textContent = formtarMoeda(soma);
 };
 
 // Eventos
-
 infoIndices.forEach(async (container) => {
   calculoCadaItem(container);
 });
 
 metodosPagamentos.forEach(async (container) => {
   somaMetodosPagamentos(container);
-})
+});

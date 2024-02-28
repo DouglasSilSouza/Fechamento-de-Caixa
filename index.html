@@ -68,6 +68,10 @@
                         <td class="title">GG</td>
                         <td class="input"><input type="text" class="form-control input-table" placeholder="Digite o valor do tamanho GG"></td>
                     </tr>
+                    </tr>
+                        <td class="title">Copos</td>
+                        <td class="input"><input type="text" class="form-control input-table" placeholder="Digite o valor do Copo"></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -90,16 +94,19 @@
               <span>
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-adquirido"
                   placeholder="Adquirido"
                 />
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-vendido"
                   placeholder="Vendido"
                 />
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-restante"
                   disabled
                   placeholder="Restante"
@@ -113,16 +120,19 @@
               <span>
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-adquirido"
                   placeholder="Adquirido"
                 />
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-vendido"
                   placeholder="Vendido"
                 />
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-restante"
                   disabled
                   placeholder="Restante"
@@ -140,16 +150,19 @@
               <span>
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-adquirido"
                   placeholder="Adquirido"
                 />
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-vendido"
                   placeholder="Vendido"
                 />
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-restante"
                   disabled
                   placeholder="Restante"
@@ -167,16 +180,19 @@
               <span>
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-adquirido"
                   placeholder="Adquirido"
                 />
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-vendido"
                   placeholder="Vendido"
                 />
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-restante"
                   disabled
                   placeholder="Restante"
@@ -194,16 +210,19 @@
               <span>
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-adquirido"
                   placeholder="Adquirido"
                 />
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-vendido"
                   placeholder="Vendido"
                 />
                 <input
                   type="number"
+                  min="0"
                   class="form-control item-restante"
                   disabled
                   placeholder="Restante"
@@ -221,16 +240,49 @@
                 <span>
                   <input
                     type="number"
+                    min="0"
                     class="form-control item-adquirido"
                     placeholder="Adquirido"
                   />
                   <input
                     type="number"
+                    min="0"
                     class="form-control item-vendido"
                     placeholder="Vendido"
                   />
                   <input
                     type="number"
+                    min="0"
+                    class="form-control item-restante"
+                    disabled
+                    placeholder="Restante"
+                  />
+                  <input
+                    type="text"
+                    class="form-control item-subtotal"
+                    disabled
+                    placeholder="Subtotal"
+                  />
+                </span>
+              </li>
+              <li class="copos">
+                <p>Copos</p>
+                <span>
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control item-adquirido"
+                    placeholder="Adquirido"
+                  />
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control item-vendido"
+                    placeholder="Vendido"
+                  />
+                  <input
+                    type="number"
+                    min="0"
                     class="form-control item-restante"
                     disabled
                     placeholder="Restante"
@@ -249,6 +301,7 @@
               <span>
                 <input
                   type="number"
+                  min="0"
                   id="item-restante-subtotal"
                   class="form-control"
                   disabled
@@ -274,6 +327,7 @@
                 >
                 <input
                   type="number"
+                  min="0"
                   class="form-control"
                   id="card-credit"
                   placeholder="Coloque o valor aqui"
@@ -285,6 +339,7 @@
                 >
                 <input
                   type="number"
+                  min="0"
                   class="form-control"
                   id="card-debit"
                   placeholder="Coloque o valor aqui"
@@ -294,6 +349,7 @@
                 <label class="form-label" for="pix">PIX</label>
                 <input
                   type="number"
+                  min="0"
                   class="form-control"
                   id="pix"
                   placeholder="Coloque o valor aqui"
@@ -306,7 +362,7 @@
       </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
       $(document).ready(function(){
           $('.input-table').mask('R$ 00,00');
