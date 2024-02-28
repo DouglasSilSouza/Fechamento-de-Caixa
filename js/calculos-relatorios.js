@@ -26,10 +26,9 @@ const calculoCadaItem = (container) => {
         if (!valoresSacos) {
           return;
         }
-        // console.log(valoresSacos.objValores[nameClass] === null)
-        if (valoresSacos.objValores[nameClass] === null) {
+        if (!valoresSacos.objValores[nameClass] && nameClass !== "pulseiras") {
           input.disabled = true;
-          if (nameClass ==! "copos") {
+          if (nameClass !== "copos") {
             const pulseirasInput = document.querySelectorAll(".pulseiras span input");
             pulseirasInput.forEach((elementInput) => {
                 elementInput.disabled = true;
@@ -195,7 +194,6 @@ const LabelInputs = (inputs) => {
     }
   })
 };
-
 
 // Eventos
 infoIndices.forEach(async (container) => {

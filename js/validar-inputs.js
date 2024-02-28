@@ -6,14 +6,13 @@ const containerCalculos = document.querySelector("#info-container"),
 let objValores = {};
 
 const validarDados = () => {
-  let validado = true;
   let message = [];
+
   let camposVazios = [];
+
   objValores = {};
 
-  const formInputs = containerValidator.querySelectorAll(
-    "table tbody tr td.input"
-  );
+  const formInputs = containerValidator.querySelectorAll("table tbody tr td.input");
   
   formInputs.forEach((container) => {
     const campoInput = container.querySelector("input");
@@ -21,36 +20,38 @@ const validarDados = () => {
     if (!campoInput) {
       return;
     }
-
     const nameCampo = campoInput.parentNode.parentNode.querySelector(".title").textContent;
 
-    // Verificar se é o campo de Copos e se está vazio
-    if (nameCampo.toLowerCase() === 'copos' && campoInput.value.trim() === "") {
-      if (campoInput.value === undefined || campoInput.value.trim() === "" && nameCampo.toLowerCase() !== 'copos') {
-        camposVazios.push(nameCampo);
-        validado = false;
-      } else {
-        const formatValue = campoInput.value
-          .replace("R$", "")
-          .replace(",", ".")
-          .trim();
-        objValores[nameCampo.toLowerCase()] = parseFloat(formatValue);
-      }
+    const formatValue = campoInput.value.replace("R$", "").replace(",", ".").trim();
+
+    const salvarObjeto = (valurInputs) => {
+      objValores[nameCampo.toLowerCase()] = parseFloat(valurInputs);
+    }
+
+    
+    if (formatValue === undefined || formatValue.trim() === "") {
+      camposVazios.push(nameCampo);
     } else {
-      const formatValue = campoInput.value
-          .replace("R$", "")
-          .replace(",", ".")
-          .trim();
-        objValores[nameCampo.toLowerCase()] = parseFloat(formatValue);
+      salvarObjeto(formatValue);
     }
 
   });
 
-  // Adiciona a mensagem apenas se houver campos vazios
+  function verificarCampos(campos) {
+    if (campos.includes("Copos") && campos.length === 1) {
+      return true
+    } else if (!campos.includes("Copos") && campos.length === 5) {
+      return true
+    } else if (!campos.includes("Copos") && campos.length === 0) {
+      return true
+    }
+  }
+
+  let validado = false;
+  validado = verificarCampos(camposVazios);
+
   if (!validado && camposVazios.length > 0) {
-    const messageCampoVazio = `Preencha o(s) seguinte(s) campo(s): ${camposVazios.join(
-      ", "
-    )}`;
+    const messageCampoVazio = `Preencha o(s) seguinte(s) campo(s): ${camposVazios.join(", ")}`;
     message.push(messageCampoVazio);
   }
 
@@ -64,8 +65,8 @@ const pressBtn = () => {
     if (validar.validado) {
       containerCalculos.classList.remove("hide");
       containerValidator.classList.add("hide");
-      salvarDadosNaSessao();
       location.reload();
+      salvarDadosNaSessao();
     } else {
       Swal.fire({
         title: "OPS...",
@@ -114,6 +115,7 @@ const editValues = () => {
       containerCalculos.classList.add("hide");
       containerValidator.classList.remove("hide");
       pressBtn();
+      location.reload();
     }
   });
 };
