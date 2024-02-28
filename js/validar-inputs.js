@@ -57,7 +57,6 @@ const validarDados = () => {
   return { validado, message };
 };
 
-
 const pressBtn = () => {
   containerCalculos.classList.add("hide");
   buttonConfirmation.addEventListener("click", () => {
@@ -105,6 +104,9 @@ const obterDadosDaSessao = () => {
 };
 
 const editValues = () => {
+  if (containerCalculos.classList.contains("hide")) {
+    buttonEditValues.parentElement.classList.add("hide")
+  }
   buttonEditValues.addEventListener("click", () => {
     if (sessionStorage.getItem("objValores")) {
       sessionStorage.removeItem("objValores");

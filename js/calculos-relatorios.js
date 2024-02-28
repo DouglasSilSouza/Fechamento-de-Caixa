@@ -15,6 +15,8 @@ const calculoCadaItem = (container) => {
   container.querySelectorAll("li span").forEach((element) => {
     const nameClass = element.parentNode.className;
 
+    LabelInputs(element);
+
     const itemAdquiridoInput = element.querySelector("input.item-adquirido");
     const itemVendidoInput = element.querySelector("input.item-vendido");
 
@@ -167,6 +169,33 @@ const somandoTotal = (nameClass, valueItem) => {
   }
   totalDiv.textContent = formtarMoeda(soma);
 };
+
+const mediaQuery = window.matchMedia("(max-width: 540px)");
+
+const LabelInputs = (inputs) => {
+  mediaQuery.addEventListener("change", () => {
+    if (mediaQuery.matches) {
+      const getInputs = inputs.querySelectorAll("input");
+      getInputs.forEach((input) => {
+        const creatSpan = document.createElement("span");
+  
+        const creatLabel = document.createElement("label");
+        const placeholderLabel = input.getAttribute("placeholder");
+        const classLabel = (input.className).replace("form-control", "").trim();
+        creatLabel.setAttribute("for", classLabel);
+        input.setAttribute("id", classLabel);
+  
+        creatLabel.innerHTML = `Item ${placeholderLabel}`;
+  
+        creatSpan.appendChild(creatLabel);
+  
+        input.parentNode.insertBefore(creatSpan, input);
+        creatSpan.appendChild(input);
+      });
+    }
+  })
+};
+
 
 // Eventos
 infoIndices.forEach(async (container) => {

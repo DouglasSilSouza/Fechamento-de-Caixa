@@ -155,7 +155,7 @@ main h5 {
 }
 #confirmacao-dados {
     margin-top: 25px;
-    padding-bottom: 15px;
+    padding: 0 15px 15px;
     display: flex;
     flex-direction: column;
 }
@@ -182,14 +182,22 @@ main h5 {
     display: none !important;
 }
 
+@media screen and (max-width: 1030px) {
+    header, main {
+        min-width: 80%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    header, main {
+        min-width: 100%;
+    }
+}
+
 @media screen and (max-width: 540px) {
 
     body {
         padding: .5rem;
-    }
-
-    header, main {
-        min-width: 100%;
     }
 
     main {
@@ -197,8 +205,19 @@ main h5 {
     }
 
     main h5 {
-        font-size: 1rem;
+        margin: 10px;
+        font-size: .9rem;
     }
+
+    main p {
+        font-size: .7rem;
+        text-align: center;
+    }
+
+    main p button {
+        font-size: .7rem !important;
+    }
+
 
     #info-container {
         padding: .5rem;
@@ -219,16 +238,23 @@ main h5 {
 
     #info-container .info-indice ul li span {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
         gap: .5rem;
         justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
     }
 
-    #info-container .info-indice ul li span input {
-        flex: 1 2 50%;
+    #info-container .info-indice ul li span span {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1 2 40%;
+    }
+
+    #info-container .info-indice ul li span span input {
+        /* flex: 1 2 50%; */
         margin-bottom: 10px;
-        min-width: 48%;
+        min-width: 100%;
     }
 
     #info-container .info-indice ul li p {
