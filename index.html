@@ -4,20 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fechamento de Caixa</title>
-    <!-- Importações -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+    <!-- Importações -->    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Do proeto -->
+    <!-- Do projeto -->
     <link rel="stylesheet" href="./css/styles.css" />
     <script type="module" src="./js/validar-inputs.js" defer></script>
     <script type="module" src="./js/calculos-relatorios.js" defer></script>
@@ -92,25 +86,15 @@
             <li class="pulseiras">
               <p>Pulseiras</p>
               <span>
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-adquirido"
-                  placeholder="Adquirido"
-                />
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-vendido"
-                  placeholder="Vendido"
-                />
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-restante"
-                  disabled
-                  placeholder="Restante"
-                />
+                <input type="number" min="0" class="form-control item-adquirido" placeholder="Adquirido"/>
+                <input type="number" min="0" class="form-control item-vendido" placeholder="Vendido"/>
+                <input type="number" min="0" class="form-control item-restante" disabled placeholder="Restante"/>
+                <button class="btn btn-outline-primary btn-sm mx-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="A quantiadade de restante das Pulseiras deve coincidir com a quantidades de items restantes">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                  </svg>
+                </button>
               </span>
             </li>
             <br />
@@ -118,204 +102,66 @@
             <li class="pp">
               <p>PP</p>
               <span>
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-adquirido"
-                  placeholder="Adquirido"
-                />
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-vendido"
-                  placeholder="Vendido"
-                />
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-restante"
-                  disabled
-                  placeholder="Restante"
-                />
-                <input
-                  type="text"
-                  class="form-control item-subtotal"
-                  disabled
-                  placeholder="Subtotal"
-                />
+                <input type="number" min="0" class="form-control item-adquirido" placeholder="Adquirido"/>
+                <input type="number" min="0" class="form-control item-vendido" placeholder="Vendido"/>
+                <input type="number" min="0" class="form-control item-restante" disabled placeholder="Restante"/>
+                <input type="text" class="form-control item-subtotal" disabled placeholder="Subtotal"/>
               </span>
             </li>
             <li class="p">
               <p>P</p>
               <span>
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-adquirido"
-                  placeholder="Adquirido"
-                />
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-vendido"
-                  placeholder="Vendido"
-                />
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-restante"
-                  disabled
-                  placeholder="Restante"
-                />
-                <input
-                  type="text"
-                  class="form-control item-subtotal"
-                  disabled
-                  placeholder="Subtotal"
-                />
+                <input type="number" min="0" class="form-control item-adquirido" placeholder="Adquirido"/>
+                <input type="number" min="0" class="form-control item-vendido" placeholder="Vendido"/>
+                <input type="number" min="0" class="form-control item-restante" disabled placeholder="Restante"/>
+                <input type="text" class="form-control item-subtotal" disabled placeholder="Subtotal"/>
               </span>
             </li>
             <li class="m">
               <p>M</p>
               <span>
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-adquirido"
-                  placeholder="Adquirido"
-                />
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-vendido"
-                  placeholder="Vendido"
-                />
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-restante"
-                  disabled
-                  placeholder="Restante"
-                />
-                <input
-                  type="text"
-                  class="form-control item-subtotal"
-                  disabled
-                  placeholder="Subtotal"
-                />
+                <input type="number" min="0" class="form-control item-adquirido" placeholder="Adquirido"/>
+                <input type="number" min="0" class="form-control item-vendido" placeholder="Vendido"/>
+                <input type="number" min="0" class="form-control item-restante" disabled placeholder="Restante"/>
+                <input type="text" class="form-control item-subtotal" disabled placeholder="Subtotal"/>
               </span>
             </li>
             <li class="g">
               <p>G</p>
               <span>
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-adquirido"
-                  placeholder="Adquirido"
-                />
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-vendido"
-                  placeholder="Vendido"
-                />
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control item-restante"
-                  disabled
-                  placeholder="Restante"
-                />
-                <input
-                  type="text"
-                  class="form-control item-subtotal"
-                  disabled
-                  placeholder="Subtotal"
-                />
+                <input type="number" min="0" class="form-control item-adquirido" placeholder="Adquirido"/>
+                <input type="number" min="0" class="form-control item-vendido" placeholder="Vendido"/>
+                <input type="number" min="0" class="form-control item-restante" disabled placeholder="Restante"/>
+                <input type="text" class="form-control item-subtotal" disabled placeholder="Subtotal"/>
               </span>
             </li>
             <li class="gg">
                 <p>GG</p>
                 <span>
-                  <input
-                    type="number"
-                    min="0"
-                    class="form-control item-adquirido"
-                    placeholder="Adquirido"
-                  />
-                  <input
-                    type="number"
-                    min="0"
-                    class="form-control item-vendido"
-                    placeholder="Vendido"
-                  />
-                  <input
-                    type="number"
-                    min="0"
-                    class="form-control item-restante"
-                    disabled
-                    placeholder="Restante"
-                  />
-                  <input
-                    type="text"
-                    class="form-control item-subtotal"
-                    disabled
-                    placeholder="Subtotal"
-                  />
+                  <input type="number" min="0" class="form-control item-adquirido" placeholder="Adquirido"/>
+                  <input type="number" min="0" class="form-control item-vendido" placeholder="Vendido"/>
+                  <input type="number" min="0" class="form-control item-restante" disabled placeholder="Restante"/>
+                  <input type="text" class="form-control item-subtotal" disabled placeholder="Subtotal"/>
                 </span>
               </li>
+              <li class="Subtotal">
+                  <p>SubTotais dos Items</p>
+                  <span>
+                    <input type="number" id="item-restante-subtotal" class="form-control" disabled placeholder="Restante"/>
+                    <input type="text" id="valores-subtotal" class="form-control" disabled placeholder="Subtotal"/>
+                  </span>
+                  <div id="igualrestante" class="invalid-feedback text-center fs-5 hide">A quantidade de Itens restantes não é igual a quantidade de pulseiras entregues.</div>
+              </li>
+              <br>
               <li class="copos">
                 <p>Copos</p>
                 <span>
-                  <input
-                    type="number"
-                    min="0"
-                    class="form-control item-adquirido"
-                    placeholder="Adquirido"
-                  />
-                  <input
-                    type="number"
-                    min="0"
-                    class="form-control item-vendido"
-                    placeholder="Vendido"
-                  />
-                  <input
-                    type="number"
-                    min="0"
-                    class="form-control item-restante"
-                    disabled
-                    placeholder="Restante"
-                  />
-                  <input
-                    type="text"
-                    class="form-control item-subtotal"
-                    disabled
-                    placeholder="Subtotal"
-                  />
+                  <input type="number" min="0" class="form-control item-adquirido" placeholder="Adquirido"/>
+                  <input type="number" min="0" class="form-control item-vendido" placeholder="Vendido"/>
+                  <input type="number" min="0" class="form-control item-restante" disabled placeholder="Restante"/>
+                  <input type="text" class="form-control item-subtotal" disabled placeholder="Subtotal"/>
                 </span>
               </li>
-            <br />
-            <li class="Subtotal">
-              <p>SubTotais dos Items</p>
-              <span>
-                <input
-                  type="number"
-                  min="0"
-                  id="item-restante-subtotal"
-                  class="form-control"
-                  disabled
-                  placeholder="Restante"
-                />
-                <input
-                  type="text"
-                  id="valores-subtotal"
-                  class="form-control"
-                  disabled
-                  placeholder="Subtotal"
-                />
-              </span>
-            </li>
           </ul>
         </div>
         <div class="finally">
@@ -325,35 +171,19 @@
                 <label class="form-label" for="card-credit"
                   >Cartão de Crédito</label
                 >
-                <input
-                  type="number"
-                  min="0"
+                <input type="number" min="0"
                   class="form-control"
                   id="card-credit"
                   placeholder="Coloque o valor aqui"
                 />
               </li>
               <li class="card-debit">
-                <label class="form-label" for="card-debit"
-                  >Cartão de Débito</label
-                >
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control"
-                  id="card-debit"
-                  placeholder="Coloque o valor aqui"
-                />
+                <label class="form-label" for="card-debit">Cartão de Débito</label>
+                <input type="number" min="0" class="form-control" id="card-debit" placeholder="Coloque o valor aqui"/>
               </li>
               <li class="pix">
                 <label class="form-label" for="pix">PIX</label>
-                <input
-                  type="number"
-                  min="0"
-                  class="form-control"
-                  id="pix"
-                  placeholder="Coloque o valor aqui"
-                />
+                <input type="number" min="0" class="form-control" id="pix" placeholder="Coloque o valor aqui"/>
               </li>
             </ul>
           </div>

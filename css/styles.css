@@ -105,6 +105,7 @@ main h5 {
     flex-direction: row;
     list-style: none;
     gap: 2rem;
+    justify-content: end;
 }
 
 #info-container .info-indice ul li span input {
@@ -113,15 +114,34 @@ main h5 {
 
 #info-container .info-indice ul .Subtotal {
     justify-content: space-between;
+    flex-direction: column;
+    gap: .5rem 0;
 }
 
-#info-container .info-indice ul .Subtotal span {
-    justify-content: flex-end;
-    padding-right: 1.5rem;
+#info-container .info-indice ul .Subtotal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 100px;
+    align-items: flex-start;
+    position: relative;
+}
+
+#info-container .info-indice ul .Subtotal div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 #info-container .info-indice ul .Subtotal span input {
     max-width: 28%;
+}
+
+#info-container .info-indice ul .Subtotal #igualrestante {
+    position: absolute;
+    top: 50px;
+    right: 0;
 }
 
 .finally {
@@ -130,7 +150,7 @@ main h5 {
 }
 
 .info-metodo-pagamento {
-    min-width: 50%;
+    min-width: 70%;
 }
 
 .info-metodo-pagamento ul {
@@ -151,7 +171,7 @@ main h5 {
 }
 
 #total {
-    min-width: 50%;
+    min-width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -223,7 +243,6 @@ main h5 {
         font-size: .7rem !important;
     }
 
-
     #info-container {
         padding: .5rem;
     }
@@ -239,6 +258,11 @@ main h5 {
     #info-container .info-indice ul li {
         gap: .5rem;
         flex-direction: column;
+    }
+
+    .info-metodo-pagamento ul li {
+        padding: 0;
+        border: 0;
     }
 
     #info-container .info-indice ul li span {
@@ -273,6 +297,20 @@ main h5 {
     .finally .info-metodo-pagamento ul {
         flex-direction: column;
         margin-bottom: 30px;
+        padding: 0;
+    }
+
+    #info-container .info-indice ul .Subtotal {
+        flex-direction: column;
+    }
+
+    #info-container .info-indice ul .Subtotal #igualrestante {
+       position: relative;
+       top: 0;
+    }
+
+    #info-container .info-indice ul .Subtotal div{
+        padding: 0;
     }
 
     #info-container .info-indice ul .Subtotal span {

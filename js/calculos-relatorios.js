@@ -1,16 +1,16 @@
 // Seletores
 const infoIndices = document.querySelectorAll(".info-indice ul li");
-const metodosPagamentos = document.querySelectorAll(
-  ".finally .info-metodo-pagamento ul"
-);
+const metodosPagamentos = document.querySelectorAll(".finally .info-metodo-pagamento ul");
 const totalDiv = document.querySelector("#total span");
 
-const valoresSacos = JSON.parse(sessionStorage.getItem("objValores"));
-
-const formtarMoeda = (value) =>
-  `R$ ${value.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
 // Funções
+const valoresSacos = JSON.parse(sessionStorage.getItem("objValores"));
+
+const formtarMoeda = (value) =>`R$ ${value.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+
 const calculoCadaItem = (container) => {
   container.querySelectorAll("li span").forEach((element) => {
     const nameClass = element.parentNode.className;
@@ -37,7 +37,6 @@ const calculoCadaItem = (container) => {
           return;
         }
 
-
         input.addEventListener("change", (event) => {
           const itemAdquirido = parseInt(itemAdquiridoInput.value);
           const itemVendido = parseInt(itemVendidoInput.value);
@@ -59,14 +58,20 @@ const calculoCadaItem = (container) => {
             );
           } else {
             const qtdItens = itemAdquirido - itemVendido;
-            itemRestante.value = qtdItens;
+            itemRestante.value = qtdItens === 0 ? "" : qtdItens;
+            
             if (nameClass !== "pulseiras") {
-              somaQuantidadeTodosItens(nameClass, qtdItens, container);
               const calculandoItems =
-                itemVendido * valoresSacos.objValores[nameClass];
+              itemVendido * valoresSacos.objValores[nameClass];
+              itemSubtotal.value = calculandoItems === 0 ? "" : formtarMoeda(calculandoItems);
+              
+              if (nameClass === "copos"){
+                return;
+              }
+              somaQuantidadeTodosItens(nameClass, qtdItens, container);
               somaValoresTodosItens(nameClass, calculandoItems, container);
-              itemSubtotal.value = formtarMoeda(calculandoItems);
             }
+            verificarDiferenca(container);
           }
         });
       });
@@ -96,10 +101,9 @@ const somaValoresTodosItens = (nameClass, valueItem, container) => {
 };
 
 const somaQuantidadeTodosItens = (nameClass, qtd, container) => {
-  const todosRestantes = container.parentNode.querySelector(
-    ".Subtotal span #item-restante-subtotal"
-  );
-
+  const containerPai = container.parentNode,
+        todosRestantes = containerPai.querySelector(".Subtotal span #item-restante-subtotal");
+  
   if (!somaQuantidadeTodosItens.obj) {
     somaQuantidadeTodosItens.obj = {};
   }
@@ -130,6 +134,21 @@ const somaValoresMetodosPagamentos = (nameClass, valueItem) => {
   somandoTotal(nameClass, valueItem);
   // todosRestantes.value = soma
 };
+
+const verificarDiferenca = (container) => {
+  const containerPai = container.parentNode,
+        todosRestantes = containerPai.querySelector(".Subtotal span #item-restante-subtotal"),
+        messageInvalid = containerPai.querySelector(".Subtotal div#igualrestante"),
+        pulseirasRestantes = containerPai.querySelector(".pulseiras span .item-restante");
+
+  if ((parseInt(pulseirasRestantes.value) === parseInt(todosRestantes.value)) || (pulseirasRestantes.value === "" || todosRestantes.value === "")) {
+    messageInvalid.classList.add("hide");
+    todosRestantes.classList.remove("is-invalid");
+  } else {
+    messageInvalid.classList.remove("hide");
+    todosRestantes.classList.add("is-invalid");
+  }
+}
 
 const somaMetodosPagamentos = (container) => {
   container.querySelectorAll("li").forEach((element) => {
