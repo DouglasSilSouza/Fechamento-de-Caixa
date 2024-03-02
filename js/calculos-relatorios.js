@@ -65,9 +65,8 @@ const calculoCadaItem = (container) => {
               itemVendido * valoresSacos.objValores[nameClass];
               itemSubtotal.value = calculandoItems === 0 ? "" : formtarMoeda(calculandoItems);
               
-              if (nameClass === "copos"){
-                return;
-              }
+              if (nameClass === "copos"){ somandoTotal(nameClass, calculandoItems); return}
+              
               somaQuantidadeTodosItens(nameClass, qtdItens, container);
               somaValoresTodosItens(nameClass, calculandoItems, container);
             }
@@ -82,7 +81,9 @@ const calculoCadaItem = (container) => {
 const somaValoresTodosItens = (nameClass, valueItem, container) => {
   const todosSubtotais = container.parentNode.querySelector(
     ".Subtotal span #valores-subtotal"
-  );
+  ) ? container.parentNode.querySelector(
+    ".Subtotal span #valores-subtotal"
+  ) : container.parentNode.querySelector(".Subtotal span span .subtotal")
 
   if (!somaValoresTodosItens.obj) {
     somaValoresTodosItens.obj = {};
@@ -102,7 +103,9 @@ const somaValoresTodosItens = (nameClass, valueItem, container) => {
 
 const somaQuantidadeTodosItens = (nameClass, qtd, container) => {
   const containerPai = container.parentNode,
-        todosRestantes = containerPai.querySelector(".Subtotal span #item-restante-subtotal");
+        todosRestantes = containerPai.querySelector(".Subtotal span #item-restante-subtotal")
+        ? containerPai.querySelector(".Subtotal span #item-restante-subtotal")
+        : containerPai.querySelector(".Subtotal span span .restante");
   
   if (!somaQuantidadeTodosItens.obj) {
     somaQuantidadeTodosItens.obj = {};
@@ -115,7 +118,7 @@ const somaQuantidadeTodosItens = (nameClass, qtd, container) => {
       soma += somaQuantidadeTodosItens.obj[propriedade];
     }
   }
-
+  console.log(todosRestantes)
   todosRestantes.value = soma;
 };
 
@@ -191,27 +194,27 @@ const somandoTotal = (nameClass, valueItem) => {
 const mediaQuery = window.matchMedia("(max-width: 540px)");
 
 const LabelInputs = (inputs) => {
-  mediaQuery.addEventListener("change", () => {
-    if (mediaQuery.matches) {
-      const getInputs = inputs.querySelectorAll("input");
+  const getInputs = inputs.querySelectorAll("input");
+  if (mediaQuery.matches) {
       getInputs.forEach((input) => {
         const creatSpan = document.createElement("span");
-  
-        const creatLabel = document.createElement("label");
         const placeholderLabel = input.getAttribute("placeholder");
-        const classLabel = (input.className).replace("form-control", "").trim();
-        creatLabel.setAttribute("for", classLabel);
-        input.setAttribute("id", classLabel);
+        let classLabel = (input.className).replace("form-control", "").trim();
+        const creatLabel = document.createElement("label");
   
-        creatLabel.innerHTML = `Item ${placeholderLabel}`;
-  
+        console.log(classLabel, typeof classLabel)
+        creatLabel.setAttribute('for', classLabel);
         creatSpan.appendChild(creatLabel);
-  
+
+        
+        creatLabel.innerHTML = `Item ${placeholderLabel}`;
+        
+        
+        input.setAttribute("id", classLabel);
         input.parentNode.insertBefore(creatSpan, input);
         creatSpan.appendChild(input);
       });
     }
-  })
 };
 
 // Eventos
