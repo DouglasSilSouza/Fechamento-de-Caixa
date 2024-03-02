@@ -81,9 +81,7 @@ const calculoCadaItem = (container) => {
 const somaValoresTodosItens = (nameClass, valueItem, container) => {
   const todosSubtotais = container.parentNode.querySelector(
     ".Subtotal span #valores-subtotal"
-  ) ? container.parentNode.querySelector(
-    ".Subtotal span #valores-subtotal"
-  ) : container.parentNode.querySelector(".Subtotal span span .subtotal")
+  );
 
   if (!somaValoresTodosItens.obj) {
     somaValoresTodosItens.obj = {};
@@ -103,9 +101,7 @@ const somaValoresTodosItens = (nameClass, valueItem, container) => {
 
 const somaQuantidadeTodosItens = (nameClass, qtd, container) => {
   const containerPai = container.parentNode,
-        todosRestantes = containerPai.querySelector(".Subtotal span #item-restante-subtotal")
-        ? containerPai.querySelector(".Subtotal span #item-restante-subtotal")
-        : containerPai.querySelector(".Subtotal span span .restante");
+        todosRestantes = containerPai.querySelector(".Subtotal span #item-restante-subtotal");
   
   if (!somaQuantidadeTodosItens.obj) {
     somaQuantidadeTodosItens.obj = {};
@@ -118,7 +114,6 @@ const somaQuantidadeTodosItens = (nameClass, qtd, container) => {
       soma += somaQuantidadeTodosItens.obj[propriedade];
     }
   }
-  console.log(todosRestantes)
   todosRestantes.value = soma;
 };
 
@@ -195,26 +190,23 @@ const mediaQuery = window.matchMedia("(max-width: 540px)");
 
 const LabelInputs = (inputs) => {
   const getInputs = inputs.querySelectorAll("input");
-  if (mediaQuery.matches) {
-      getInputs.forEach((input) => {
-        const creatSpan = document.createElement("span");
-        const placeholderLabel = input.getAttribute("placeholder");
-        let classLabel = (input.className).replace("form-control", "").trim();
-        const creatLabel = document.createElement("label");
-  
-        console.log(classLabel, typeof classLabel)
-        creatLabel.setAttribute('for', classLabel);
-        creatSpan.appendChild(creatLabel);
 
-        
-        creatLabel.innerHTML = `Item ${placeholderLabel}`;
-        
-        
-        input.setAttribute("id", classLabel);
-        input.parentNode.insertBefore(creatSpan, input);
-        creatSpan.appendChild(input);
-      });
-    }
+  if (mediaQuery.matches) {
+    getInputs.forEach((input) => {
+      const creatSpan = document.createElement("span");
+      const placeholderLabel = input.getAttribute("placeholder");
+      const inputLabel = input.getAttribute("id");
+      const creatLabel = document.createElement("label");
+
+      creatLabel.setAttribute('for', inputLabel);
+      creatSpan.appendChild(creatLabel);
+
+      creatLabel.innerHTML = `Item ${placeholderLabel}`;
+
+      input.parentNode.insertBefore(creatSpan, input);
+      creatSpan.appendChild(input);
+    });
+  }
 };
 
 // Eventos
